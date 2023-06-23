@@ -1,0 +1,3 @@
+https://docs.nestjs.com
+npm i -g @nestjs/cli
+nest new project-name

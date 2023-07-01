@@ -17,7 +17,7 @@ exports.showProducts = function (param) {
       category: "Monitores",
     },
   ];
-  return products.filter((product) => {
-    return product.price > param;
+  return products.filter((products) => {
+    return products.price > param;
   });
 };

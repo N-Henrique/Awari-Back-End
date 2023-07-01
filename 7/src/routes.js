@@ -1,25 +1,26 @@
 const { Router } = require("express");
 const categoryService = require("./categories/category.service");
-const productService = require("./products/products.service");
+const productsService = require("./products/products.service");
 const route = Router();
 
-//controler
-route.get("/users", (req, res) => {
-  return res.send("Usuários");
+route.post("/products", (req, res) => {
+  console.log(req.body);
+  return res.send("deu certo");
 });
 
+//controler
 route.get("/products/:category", (req, res) => {
-  console.log(req.params);
-  const products = productService.showProducts(req.query.price);
-  return res.json(products);
+  console.log(req.query);
+  const products = productsService.showProducts(req.query.price);
+  return res.status(201).json(products);
 });
 
 route.get("/categories", (req, res) => {
   const categories = categoryService.showCategories();
-  return res.json(categories);
+  return res.status(200).json(categories);
 });
 
-route.get("/pagamentos", (req, res) => {
+route.get("/payments", (req, res) => {
   return res.send("Meu Servidor");
 });
 

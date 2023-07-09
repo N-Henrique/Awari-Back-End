@@ -1,0 +1,54 @@
+create database ecommerce--cria um banco de dados--
+
+use ecommerce--seleciona o banco de dados ecommerce--
+
+create table produtos (--cria a tabela com nome produtos--
+--define o 'nome', 'tipo' de coluna, 'tamanho' e se é 'obrigatorio(NOT NULL)'--
+    nome VARCHAR(60) NOT NULL,--tipo de item 'string variavel'--
+    preco DECIMAL (10,2) NOT NULL--tipo de item 'numero decimal'--
+    descricao VARCHAR(255) NOT NULL,
+    categoria VARCHAR(25),
+    imagem_url VARCHAR(150) NOT NULL,
+);
+
+produtos
+- nome
+- preco
+- descricao
+- categoria
+- imagem
+
+insert into--coloca informações, "into" seleciona o local--
+update--edita um produto "USE O WHERE PARA NÃO FAZER CAGADA"--
+delete
+select--busca uma informação--
+where--condicional para um comando acontecer--
+set--define qual variavel vai receber o valor ou alteração--
+
+--criando um novo produto na tabela produtos--
+insert into produtos (nome, preco, descricao, categoria, imagem_url) values ('Tênis', 100, 'Tenis de Corrida', 'Esporte', '#');
+
+--adiciona a coluna id na tabela produtos--
+    ALTER TABLE--comando para alterar tabela--
+    ADD COLUMN--comndo para adicionar coluna--
+    INTEGER--tipo de item 'numero inteiro'--
+    PRIMARY KEY--'PRIMARY KEY' define um valor unico que não pode se repetir--
+    AUTO_INCREMENT--'AUTO_INCREMENT' vai adcionar um numero automatico sequencial--
+
+ALTER TABLE produtos ADD COLUMN id INTEGER PRIMARY KEY AUTO_INCREMENT
+
+--editar um produto--
+update produtos set nome = 'Tênis Amarelo' where id = 1;--'set' define qual variavel vai receber alteração e 'where' da a condição para o update acontecer--
+
+--deletando um produto--
+delete from produtos where id = 2;--'from' define o lugar que vai receber a deleção de dados e 'where' da a condição para o delete acontecer--
+alter table produtos drop column descricao--deletenado uma coluna--
+
+--buscando algo especifico--
+select * from produtos --'*' seleciona todos os campos possiveis, 'from' define o lugar que vai receber a busca de dados--
+select nome, preco from produtos where categoria = 'esportes'--'where' da a condição para a busca acontecer--
+select nome, preco from produtos where descricao like '%luxo%'--'like' seguido de '%' busca algo que começe ou termine ou esta entre o conteudo sitado na busca--
+select nome, preco from produtos where descricao like '%Tênis%' and preco < 1000;--'and' da um se gundo criterio para busca--
+select nome, preco from produtos where descricao like '%Tênis%' or preco < 1000;--'or' da um opção entre dois criterios de busca--
+select nome, preco from produtos where descricao like '%Tênis%' or preco < 1000 order by preco desc;--'order by' seleciona a ordem que a busca vai ser apresentada 'asc'(crecente), 'desc'(decrecente)--
+
